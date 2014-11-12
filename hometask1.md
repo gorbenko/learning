@@ -18,5 +18,3 @@ https://gorbenko.mybalsamiq.com/mockups/2350075.png?key=8b3e7f571264220635f449ab
 - http://php.net/manual/ru/function.fread.php
 
 **Обязательно к выполнению.**
-
-test
