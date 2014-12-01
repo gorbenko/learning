@@ -1,7 +1,5 @@
 <?php
 
-require_once('module.php');
-
 class ModuleGallery extends Module {
 
     private $module_name = 'gallery';

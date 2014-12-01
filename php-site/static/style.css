@@ -1,5 +1,6 @@
 /* существуют reset.css и normalize.css для сброса браузерных стилей */
 /* упорядочевание стилей csscomb, zend-coding */
+/*  CSS preprocessors! */
 
 body
 {
@@ -18,19 +19,20 @@ body
     float: right;
 }
 
-.guestbook .first-name,
-.guestbook .message
+/* Module Guestbook */
+.guestbook-form .first-name,
+.guestbook-form .message
 {
     width: 100%;
 }
 
-.guestbook .message
+.guestbook-form .message
 {
     height: 100px;
     resize: vertical;
 }
 
-.guestbook .row-button
+.guestbook-form .row-button
 {
     padding: 10px;
 
@@ -38,6 +40,12 @@ body
     text-align: right;
 }
 
+.guestbook-form-success
+{
+    color: green;
+}
+
+/* Module Gallery */
 .gallery
 {
     background-color: #ddd;

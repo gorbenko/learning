@@ -2,7 +2,8 @@
 
     $config = array(
         'site' => array(
-            'title' => 'Гостевая книга',
+            'root' => '/',
+            'title' => 'Сайтик',
             'lang'  => 'ru',
             'modules_path' => 'modules'
         )
