@@ -1,0 +1,45 @@
+/* существуют reset.css и normalize.css для сброса браузерных стилей */
+/* упорядочевание стилей csscomb, zend-coding */
+
+body
+{
+    font: normal 14px Arial, sans-serif;
+}
+
+.left
+{
+    width: 40%;
+    float: left;
+}
+
+.right
+{
+    width: 40%;
+    float: right;
+}
+
+.guestbook .first-name,
+.guestbook .message
+{
+    width: 100%;
+}
+
+.guestbook .message
+{
+    height: 100px;
+    resize: vertical;
+}
+
+.guestbook .row-button
+{
+    padding: 10px;
+
+    background-color: #eee;
+    text-align: right;
+}
+
+.gallery
+{
+    background-color: #ddd;
+    height: 300px;
+}
