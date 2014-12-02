@@ -1,6 +1,5 @@
 <?php
-    // используйте не интерпритируемые кавычки, если не нужны выражения в строках
-    require('application.php');
+    require_once('config.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -8,13 +7,15 @@
     <meta charset="UTF-8">
     <title><?= $config['site']['title'] ?></title> <!-- секции конфига вводят порядок в структуру -->
     <link href="static/style.css" rel="stylesheet" type="text/css">
+    <script src="static/jquery.js" type="text/javascript"></script>
 </head>
 <body>
 
 <?php
-    // используйте паттерн Factory
+    require('application.php');
+
     $guestbook = new ModuleGuestbook();
-    $gallery =   new ModuleGallery();
+    $gallery   = new ModuleGallery();
 ?>
 
 <div class="left">

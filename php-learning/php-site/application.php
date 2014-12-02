@@ -1,9 +1,7 @@
 <?php
 
-require_once('config.php');
-
 require('core.php');
-$site = new SiteEngine();
+$site = new Site();
 
 // загружаем модули
 $site
@@ -31,10 +29,10 @@ function request() {
                 $module = new $class_name;
                 $module->$action();
             } else {
-                echo "Action $action not exists!";
+                Site::printMessage("Action $action not exists!", MESSAGE_FAIL);
             }
         } else {
-            echo "Module $mod not found!";
+            Site::printMessage("Module $mod not found!", MESSAGE_FAIL);
         }
     }
 }

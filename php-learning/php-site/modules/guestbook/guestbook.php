@@ -7,13 +7,8 @@ class ModuleGuestbook extends Module {
     private $file_path;
 
     function __construct() {
-        global $config;
-
-        // TODO: выпилить
         $this->file_path =
-            $config['site']['modules_path'] .
-            DIRECTORY_SEPARATOR .
-            $this->module_name .
+            Module::buildModulePath($this->module_name, true) .
             DIRECTORY_SEPARATOR .
             $this->file_name;
     }
@@ -28,8 +23,8 @@ class ModuleGuestbook extends Module {
                 name="{$this->module_name}-form"
                 action="?mod=$this->module_name&action=add"
             >
-                <p><input name="first-name" class="first-name" placeholder="Имя"></p>
-                <p><textarea name="message" class="message" placeholder="Сообщение"></textarea></p>
+                <p><input required name="first-name" class="guestbook-form-first-name" placeholder="Имя"></p>
+                <p><textarea required name="message" class="guestbook-form-message" placeholder="Сообщение"></textarea></p>
                 <p class="row-button"><input type="submit" value="Отправить"></p>
             </form>
             <div class="{$this->module_name}-board">{$this->getMessages()}</div>
@@ -37,34 +32,33 @@ EOT;
     }
 
     public function action_add() {
-        // TODO: юзать буфферизацию вывода
+        // TODO: кидать сообщения в стек и выводить
         if ($_POST['first-name'] && $_POST['message']) {
             $handle = fopen($this->file_path, 'a+');
             if ($handle) {
                 if (fwrite($handle, $_POST['first-name'] . ': ' . $_POST['message'] . "\n")) {
-                    echo "<span class='{$this->module_name}-form-success'>Запись добавлена!</span>";
+                    Site::printMessage('Запись добавлена!', MESSAGE_SUCCESS);
                 }
                 fclose($handle);
             } else {
-                echo 'Не могу открыть файл: ' . $this->file_path;
+                Site::printMessage("Не могу открыть файл: {$this->file_path}", MESSAGE_FAIL);
             }
         } else {
-            echo 'Плохие данные!';
+            Site::printMessage('Плохие данные!', MESSAGE_FAIL);
         }
 //        header('Location: /');
     }
 
     private function getMessages() {
-        if (file_exists($this->file_path)) {
-            $fh = fopen($this->file_path, 'rb');
-            $data = fread($fh, filesize($this->file_path));
-            fclose($fh);
+        $fsize = filesize($this->file_path);
 
-            if ($data) {
-                return nl2br(htmlspecialchars($data));
-            }
+        if (file_exists($this->file_path) && $fsize) {
+            $handle = fopen($this->file_path, 'rb');
+            $data = fread($handle, $fsize);
+            fclose($handle);
+            return nl2br(htmlspecialchars($data));
         } else {
-            return 'Сообщений нет';
+            return Site::printMessage('Сообщений нет', MESSAGE_NORMAL, true);
         }
     }
 

@@ -20,13 +20,13 @@ body
 }
 
 /* Module Guestbook */
-.guestbook-form .first-name,
-.guestbook-form .message
+.guestbook-form-first-name,
+.guestbook-form-message
 {
     width: 100%;
 }
 
-.guestbook-form .message
+.guestbook-form-message
 {
     height: 100px;
     resize: vertical;
@@ -50,4 +50,28 @@ body
 {
     background-color: #ddd;
     height: 300px;
+}
+
+.message
+{
+    padding: 10px;
+    border: 1px solid;
+    text-align: center;
+}
+
+.message-success
+{
+    background-color: rgba(0, 128, 0, .40);
+    color: green;
+}
+
+.message-fail
+{
+    background-color: rgba(255, 0, 0, .40);
+    color: #f00;
+}
+
+.message-normal
+{
+    color: #000;
 }

@@ -2,23 +2,30 @@
 
 require('modules/module.php');
 
-class SiteEngine {
+define('MESSAGE_SUCCESS', 'success');
+define('MESSAGE_FAIL',    'fail');
+define('MESSAGE_NORMAL',  'normal');
+
+class Site {
 
     public function loadModule($module_name) {
-        global $config;
-
-        $module_path = $config['site']['modules_path'] .
-            DIRECTORY_SEPARATOR .
-            $module_name .
-            DIRECTORY_SEPARATOR .
-            $module_name .
-            '.php';
+        $module_path = Module::buildModulePath($module_name);
 
         if (file_exists($module_path)) {
             require_once($module_path);
         }
 
         return $this;
+    }
+
+    static function printMessage($message, $theme, $val = false) {
+        $result = "<div class='message message-{$theme}'>{$message}</div>";
+
+        if (!$val) {
+            echo $result;
+        } else {
+            return $result;
+        }
     }
 
 }
