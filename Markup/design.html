@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .content
+        {
+            /*widht: 1000px;*/
+        }
+        .block
+        {
+            vertical-align: top;
+            transition: width .2s ease-in-out .2s, left .5s ease-in-out;
+            position: absolute;
+        }
+        .w-1
+
+        {
+            width: 210px;
+            left: 0;
+        }
+        .w-2
+        {
+            width: 320px;
+            left: 215px;
+        }
+        .w-3
+        {
+            width: 640px;
+            left: 540px;
+
+        }
+
+        @media screen and (max-width: 1170px) {
+            .w-1
+            {
+                width: 105px;
+            }
+            .w-2
+            {
+                width: 160px;
+                left: 0;
+                top: 95px;
+            }
+            .w-3
+            {
+                width: 320px;
+                left: 0;
+                top: 222px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <img class="block w-1" src="cat.jpg" alt=""/>
+    <img class="block w-2" src="cat.jpg" alt=""/>
+    <img class="block w-3" src="cat.jpg" alt=""/>
+</div>
+
+</body>
+</html>
