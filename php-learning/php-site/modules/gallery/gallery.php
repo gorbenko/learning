@@ -4,12 +4,19 @@ class ModuleGallery extends Module {
 
     private $module_name = 'gallery';
 
+    function __construct() {
+        $this->render();
+    }
+
     public function render() {
-        echo <<<EOT
-            <div class="$this->module_name"><h1>Фотогаллерея</h1></div>
+        return <<<EOT
+            <div class="{$this->module_name}">
+                <h2 class="{$this->module_name}-title">Фотогаллерея</h2>
+                <form>
+                    <input type="file">
+                </form>
+            </div>
 EOT;
     }
 
 }
-
-?>

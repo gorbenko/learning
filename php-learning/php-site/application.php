@@ -1,42 +1,42 @@
-<?php
+<?php defined('SITE') or die('No direct script access.');
 
-require('core.php');
+require 'core.php';
 $site = new Site();
 
-// загружаем модули
-$site
-    ->loadModule('guestbook')
-    ->loadModule('gallery');
+require 'section.php';
 
 function request() {
-    global $config;
+    global $site;
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $mod    = $_REQUEST['mod'];
-        $action = 'action' . '_' . $_REQUEST['action'];
-
-        $module_path = $config['site']['modules_path'] .
-            DIRECTORY_SEPARATOR .
-            $mod .
-            DIRECTORY_SEPARATOR .
-            $mod .
-            '.php';
+        $module_name = $_REQUEST['mod'];
+        $action      = 'action' . '_' . $_REQUEST['action'];
+        $module_path = Site::buildModulePath($module_name);
 
         if (file_exists($module_path)) {
-            $class_name = 'Module' . ucfirst($mod);
+            $site->loadModule($module_name);
+            $class_name    = 'Module' . ucfirst($module_name);
+            $class_methods = get_class_methods($class_name);
 
-            if (in_array($action, get_class_methods('Module' . ucfirst($mod)))) {
+            if (in_array($action, $class_methods)) {
                 $module = new $class_name;
+
+                if (in_array('before', $class_methods)) {
+                    $module->before();
+                }
+
                 $module->$action();
+
+                if (in_array('after', $class_methods)) {
+                    $module->after();
+                }
             } else {
-                Site::printMessage("Action $action not exists!", MESSAGE_FAIL);
+                Site::printMessage("Action $action not exist!", MESSAGE_FAIL);
             }
         } else {
-            Site::printMessage("Module $mod not found!", MESSAGE_FAIL);
+            Site::printMessage("Module $module_name not found!", MESSAGE_FAIL);
         }
     }
 }
 
 request();
-
-?>

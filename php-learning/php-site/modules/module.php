@@ -1,27 +1,20 @@
-<?php
+<?php defined('SITE') or die('No direct script access.');
 
 class Module {
 
-    static function buildModulePath($module_name, $dir = false) {
-        global $config;
-
-        $result = $config['site']['modules_path'] .
-            DIRECTORY_SEPARATOR .
-            $module_name .
-            DIRECTORY_SEPARATOR;
-
-        if (!$dir) {
-            $result .= $module_name . '.php';
-        }
-
-        return $result;
-    }
+    /**
+     * Method is called before any action
+     */
+    function before() {}
 
     /**
      * Render view
      *
      */
-    public  function render() {}
-}
+    public function render() {}
 
-?>
+    /**
+     * Method is called after any action
+     */
+    function after() {}
+}

@@ -1,32 +1,34 @@
 <?php
-    require_once('config.php');
+    define('SITE', true); // защита от прямого доступа к скриптам
+    require_once 'config.php';
 ?>
 <!DOCTYPE html>
 <html>
-<head lang="<?= $config['site']['lang'] ?>"> <!-- оператор "=" работает как echo, символ ";" в таком случае не нужен -->
+<head lang="<?= $config['site']['lang'] ?>">
     <meta charset="UTF-8">
-    <title><?= $config['site']['title'] ?></title> <!-- секции конфига вводят порядок в структуру -->
+    <title><?= $config['site']['title'] ?></title>
     <link href="static/style.css" rel="stylesheet" type="text/css">
     <script src="static/jquery.js" type="text/javascript"></script>
 </head>
 <body>
 
 <?php
-    require('application.php');
+    require 'application.php';
+?>
 
-    $guestbook = new ModuleGuestbook();
-    $gallery   = new ModuleGallery();
+<?php
+    Section::_('top');
 ?>
 
 <div class="left">
     <?php
-        $guestbook->render();
+        Section::_('left');
     ?>
 </div>
 
 <div class="right">
     <?php
-        $gallery->render();
+        Section::_('right');
     ?>
 </div>
 
