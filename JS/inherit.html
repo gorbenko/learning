@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <a href="http://javascript.ru/tutorial/object/inheritance">Наследование в JS</a>
+    <script>
+        var Animal = function() {
+            this.watch = function () {
+                console.log(this.name + ' watched!');
+
+                return this;
+            }
+        }
+
+        Animal.prototype = {
+            cry: function() {
+                console.log(this.token);
+
+                return this;
+            }
+        }
+
+        var Monkey = function(config) {
+            this.name = config.name;
+            this.token = config.token;
+        }
+
+        Monkey.prototype = new Animal();
+        var asya = new Monkey({ name: 'asya', token: 'Uaaa!' });
+    </script>
+</body>
+</html>
