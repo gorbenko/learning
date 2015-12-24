@@ -6,9 +6,6 @@
 
 Задание: реализовать простейшую гостевую книгу.
 
-Прототип интерфейса:
-https://gorbenko.mybalsamiq.com/mockups/2350075.png?key=8b3e7f571264220635f449ab2f54ba11025c5c15
-
 **Сообщения хранятся в файле.**
 
 По ссылкам, все необходимые функции:
@@ -17,4 +14,4 @@ https://gorbenko.mybalsamiq.com/mockups/2350075.png?key=8b3e7f571264220635f449ab
 - http://php.net/manual/ru/function.fclose.php
 - http://php.net/manual/ru/function.fread.php
 
-**Обязательно к выполнению.**
+**Обязательно к выполнению!**
