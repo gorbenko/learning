@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arrow</title>
+
+    <style>
+        .arrow
+        {
+            background: #f00;
+            border-radius: 10px;
+            height: 100px;
+            width: 100px;
+            border: 4px solid #008000;
+            position: relative;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Helvetica, sans-serif;
+        }
+
+        .arrow:before,
+        .arrow:after
+        {
+            content: '';
+            left: 100%;
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 50%;
+            border: solid rgba(0,0,0,0);
+        }
+
+        .arrow:before
+        {
+            border-width: 20px;
+            margin-top: -20px;
+            border-left-color: green;
+        }
+
+        .arrow:after
+        {
+            border-width: 15px;
+            margin-top: -15px;
+            border-left-color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="arrow">Текст</div>
+
+</body>
+</html>
