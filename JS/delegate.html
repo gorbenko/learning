@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delegate</title>
+
+    <style>
+        :root
+        {
+            --width: 100px;
+            --height: 100px;
+        }
+
+        .rect
+        {
+            width: var(--width);
+            height: var(--height);
+            cursor: pointer;
+        }
+
+        .foo
+        {
+            background: red;
+        }
+
+        .bar
+        {
+            background: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="rect foo"><span>foo</span></div>
+    <div class="rect bar"><span>bar</span></div>
+    <button class="btn-add">Add foo</button>
+
+    <script>
+        const ogEngine = {};
+
+        function live(selector, fn) {
+            ogEngine.live = ogEngine.live || {};
+
+            const className = document.querySelector(selector).className;
+
+            ogEngine.live[className] = fn;
+
+            document.addEventListener('click', function (event) {
+                if (event.target.closest(selector)) {
+                    ogEngine.live[className].call();
+                }
+            });
+        }
+
+        document.querySelector('.btn-add').addEventListener('click', function () {
+            var node = document.querySelector('.foo').cloneNode(true);
+
+            document.documentElement.appendChild(node);
+        });
+
+        live('.foo', function () {
+            alert(123);
+        });
+    </script>
+
+</body>
+</html>
