@@ -1,0 +1,167 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+header
+{
+    display: flex;
+
+    padding: 10px;
+
+    background: #ccc;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .logo
+{
+    width: 52px;
+}
+
+aside
+{
+    float: left;
+
+    color: #fff;
+    background: #6060d2;
+}
+
+menu li
+{
+    padding: 10px;
+
+    list-style: none;
+}
+
+menu li:hover
+{
+    color: #6060d2;
+    background: #fff;
+}
+
+article
+{
+    overflow: hidden;
+
+    padding: 20px;
+
+    line-height: 1.5;
+
+    color: #fff;
+    background: #67ca67;
+}
+
+footer
+{
+    background: #ff8;
+}
+
+.wrapper
+{
+    overflow: hidden;
+}
+
+li.submenu:hover menu
+{
+    display: block;
+}
+
+li.submenu
+{
+    position: relative;
+}
+
+li.submenu menu
+{
+    position: absolute;
+    top: 0;
+    left: 100%;
+
+    display: none;
+
+    color: green;
+    background: pink;
+}
+
+.contacts
+{
+    float: right;
+
+    margin-top: 5px;
+
+    list-style: none;
+}
+
+li.tel
+{
+    padding-left: 20px;
+
+    background: url(img/tel.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+li.tel a
+{
+    text-decoration: none;
+
+    font-size: 16px;
+
+    color: #000;
+}
+
+.animals
+{
+    margin: 20px 0;
+    padding: 20px;
+
+    list-style: none;
+
+    font-size: 20px;
+
+    background: rgba(0,0,0,.2);
+}
+
+.animals li
+{
+    height: 128px;
+    padding-left: 180px;
+
+    line-height: 120px;
+
+    background-image: url(img/sprite.png);
+    background-repeat: no-repeat;
+}
+
+.tux
+{
+    background-position: -325px 0;
+}
+
+.cat
+{
+    background-position: -165px -140px;
+}
+
+li.mouse
+{
+    height: 80px;
+
+    line-height: 80px;
+
+    background-position: 5px -260px;
+}
+
+footer
+{
+    padding: 10px;
+}
